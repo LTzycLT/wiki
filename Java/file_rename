@@ -1,0 +1,9 @@
+后面在SUN的官方论坛上看到有人提到这个问题“works on windows, don't work on linux”，后面有人回复说是“file systems”不一样。究竟怎么不一样呢？还是没有想出来... 
+
+后面在一个论坛里面发现了某人关于这个问题的阐述： 
+
+引用
+In the Unix'esque O/S's you cannot renameTo() across file systems. This behavior is different than the Unix "mv" command. When crossing file systems mv does a copy and delete which is what you'll have to do if this is the case. 
+
+The same thing would happen on Windows if you tried to renameTo a different drive, i.e. C: -> D:
+

@@ -1,0 +1,9 @@
+mysql -uroot -p68250419 zyc --local-infile=1 -e "LOAD DATA LOCAL INFILE '/home/zyc/Documents/OnlineJudge/in' into table human(id,name);"
+
+mysql -uroot -p68250419 zyc --local-infile=1 -e "LOAD DATA LOCAL INFILE '/home/zyc/Downloads/out' into table T_student(id)"
+
+default format
+
+value \t value \t value \n
+value \t value \t value \n
+value \t value \t value \n

@@ -1,0 +1,250 @@
+<%@ page language="java" contentType="text/html; charset=GBK"
+    pageEncoding="UTF-8"%>
+
+<html>
+<head>
+  <!-- 最新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+
+<body> 
+
+<style>
+  #byte_content {
+    margin: 5px 0;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #byte_size { margin-top: 5px; }
+</style>
+
+<input type="file" id="files" name="file"/>
+<button type="button" onclick="transfer()">submit</button>
+
+
+<!-- <div class="progress progress-striped active">
+  <div id="progress" class="progress-bar" role="progressbar" style="width:0%">
+    <span class="sr-only">60% Complete</span>
+  </div>
+</div> -->
+<div id="byte_percent"></div>
+<div id="byte_speed"></div>
+<div id="byte_timeleft"></div>
+
+<script type="text/javascript">
+  var url="http://192.168.0.108:8080/ssh_test/"
+
+  var lastspeed,delayParameter=50;
+  var sz=1000000;
+  var time=new Array(delayParameter),data=new Array(delayParameter),now=0;
+  var finish;
+  function transfer(){
+    "use strict";
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+    var file = files[0];
+    init();
+    var xhr = new XMLHttpRequest(); 
+    xhr.open("POST",  url+"upload/query?fileName="+encode(file.name)+"&&fileSize="+file.size); 
+     xhr.send();  
+     xhr.onreadystatechange = function() {
+        if(xhr.readyState===4&&xhr.status===200){
+            finish = parseInt(xhr.responseText);
+            finish=finish+sz;
+            readBlob(finish-sz,finish,file);
+        }
+     }
+  }
+
+
+ function readBlob(opt_startByte, opt_stopByte, file) {
+    var xhr = new XMLHttpRequest(); 
+    var start = parseInt(opt_startByte,10);
+    var stop = parseInt(opt_stopByte,10);
+    if(stop>file.size)
+      stop = file.size;
+    if(start>=file.size)
+      return;
+    var reader = new FileReader();
+
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState === FileReader.DONE) { // DONE == 2
+        xhr.open("POST",url+"upload/solve?fileName="+encode(file.name)+"&&start="+start); 
+       xhr.overrideMimeType("application/octet-stream"); 
+       var body = reader.result;
+       if (xhr.sendAsBinary) {                   //support for firefox
+        xhr.sendAsBinary(body);
+      } else {
+        function byteValue(x) {
+          return x.charCodeAt(0) & 0xff;
+        }
+        var ords = Array.prototype.map.call(body, byteValue);
+        var ui8a = new Uint8Array(ords);
+        xhr.send(ui8a.buffer);
+      }
+       xhr.onreadystatechange = function() { 
+         if (xhr.readyState === 4 && xhr.status===200) { 
+              time[now] = getTime();
+              data[now] = stop-start;
+              // document.getElementById("progress").style.width=getPercent(stop,file)+"%";
+              document.getElementById("byte_percent").innerHTML=getPercent(stop,file);
+              document.getElementById("byte_speed").innerHTML=getSpeed();
+              document.getElementById("byte_timeleft").innerHTML=timeLeft(stop,file);
+              now++;
+              if(now>=time.length)
+                now=0;
+              finish+=sz;
+              readBlob(finish-sz,finish,file);
+          }
+        };
+      }
+    };
+    var blob;
+    blob = file.slice(start,stop);
+    reader.readAsBinaryString(blob);
+  }
+
+
+  function init(){
+    lastspeed=0;
+    for(var i=0;i<time.length;i++){
+      time[i]=-1;
+      data[i]=0;
+    }
+  }
+
+  function getTime(){
+    return new Date().getTime();
+  }
+  function getPercent(stop,file){
+    var p = stop*100.0/file.size;
+    return p;
+  }
+  function getSpeed(){                // byte/s
+    var index=now+1,datasum=0;
+    if(index>=time.length) 
+      index=0;
+    for(var i=0;i<data.length;i++)
+      datasum+=data[i];
+    while(time[index]==-1){
+      index++;
+      if(index>=data.length)
+        index=0;
+    }
+    var diffTime = time[now] - time[index];
+    diffTime /= 1000;
+    if(diffTime===0){
+      return 0;
+    }
+    else{
+      return datasum*1.0/diffTime;
+    }
+  }
+
+  function timeLeft(stop,file){
+    var speed = getSpeed();
+    if(Math.abs(speed-lastspeed)>speed/10.0 || Math.abs(speed-lastspeed)>20000){
+      lastspeed=speed;
+    }
+    if(lastspeed===0){
+      if(file.size-stop!==0)
+        return "inf";
+      else
+        return "0";
+    }else{
+      var second = parseInt((file.size-stop)/lastspeed);
+      return parseInt(second/60)+":"+parseInt(second%60);
+    }
+  }
+
+  function encode(str){
+    return str;
+  }
+</script>
+
+ </body>
+
+
+ </html>
+
+
+
+
+
+
+
+package per.zyc.web;
+
+import java.io.File;
+import java.io.RandomAccessFile;
+import java.net.URLDecoder;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping(value = "/upload")
+public class Upload {
+	private static int sz=1000000;
+	
+	@RequestMapping("/solve")
+	public @ResponseBody String getAllUser(HttpServletRequest request) {
+		try {
+			String fileName = request.getParameter("fileName");
+			File file = new File("/home/zyc/Documents/"+ fileName);
+			if (!file.exists())
+				file.createNewFile();
+			byte[] b = new byte[sz];
+			int l = upload(request,b);
+			// ServletInputStream input=request.getInputStream();
+			RandomAccessFile rf = new RandomAccessFile(file, "rw");
+			rf.seek(Integer.parseInt(request.getParameter("start")));
+//			System.out.println(request.getParameter("start") + ": " + l);
+			rf.write(b, 0, l);
+			rf.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "";
+	}
+	@RequestMapping("/query")
+	public @ResponseBody String getStart(HttpServletRequest request){
+		String start="0";
+		try{
+			String fileName = request.getParameter("fileName");
+			String fileSize = request.getParameter("fileSize");
+			System.out.println(fileName+" "+fileSize);
+			start = getDataStart();
+		}catch(Exception e){
+			
+		}
+		return start;
+	}
+	
+	private String getDataStart(){
+		return Integer.toString(0);
+	}
+	
+	private int upload(HttpServletRequest request,byte[] b) throws Exception {
+		int len=0,temp;
+		while((temp=request.getInputStream().read(b,len,sz))!=-1){
+			len+=temp;
+		}
+		return len;
+	}
+
+}
+

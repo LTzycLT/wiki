@@ -1,0 +1,795 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>安装vim 以及Vim介绍比较 - alfredtofu的专栏 - 博客频道 - CSDN.NET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="使用vi编辑器的时候发现，ESC键不能返回到默认模式，输入：help命令，发现ubuntu默认安装的vim-tiny,很多功能不完善。所有为了方便，需要安装完整的vim。注意：在ubuntu系统中vi和vim命令实际上是都是使用vim。Vim 有以下几个模式：正常（normal）模式，缺省的编辑模式；下面如果不加特殊说明，提到的命令都直接在正常模式下输入；任何其它模式中都可以通过键盘上的 Esc 键回到正常模式。命令（command）模式，用于执行较长、较复杂" />
+<script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+<link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/alfredtofu/rss/list" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+</head>
+<body>
+<script src="http://csdnimg.cn/pubnav/js/pub_topnav_2011.js"type="text/javascript"></script>
+
+<div id="container">
+<div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h1><a href="/alfredtofu">alfredtofu的专栏</a></h1>
+            <h2></h2>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg"></div>
+    <div class="navigator">
+        <ul>
+            <li id="btnContents"><a href="/alfredtofu?viewmode=contents"><span><img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+            <li id="btnView"><a href="/alfredtofu?viewmode=list"><span><img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+            <li id="btnRss"><a href="/alfredtofu/rss/list"><span><img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>
+</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "alfredtofu";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/alfredtofu";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";
+</script>
+
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="notice"> 
+
+<a href="http://www.csdn.net/article/2013-07-09/2816160" target="_blank">
+<font color=red>专访赵霏：应把握机会 HTML5游戏开发已臻成熟 </font></a>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/9226601" target="_blank"><font color=blue>2013年7月微软MVP当选名单揭晓
+</font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/csdnproduct/article/details/9226265
+"target="_blank">
+<font color=red>CSDN博客频道自定义摘要、图片水印、热门标签等功能上线啦 
+
+
+ </font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/9136613"target="_blank">
+<font color=red>CSDN博客第二期云计算最佳博主评选
+
+ </font></a>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href=""target="_blank">
+<font color=blue>
+ </font></a>
+
+
+
+
+</div>
+<div id="article_details" class="details">
+    <div class="article_title">
+    <span class="ico ico_type_Original"></span>
+    <h3>
+        <span class="link_title"><a href="/alfredtofu/article/details/6298948">
+        安装vim 以及Vim介绍比较
+        </a></span>
+    </h3>
+</div>
+
+        
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="/alfredtofu/article/category/804840">unix/linux</a> 
+        </span>
+    <span class="link_postdate">2011-04-02 17:36</span>
+    <span class="link_view" title="阅读次数">1637人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="#comments">评论</a>(0)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle('安装vim 以及Vim介绍比较','6298948');return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="#report"  onclick="javascript:report(6298948,2);return false;" title="举报">举报</a></span>
+    
+</div>
+<div class="tag2box"><a href='http://blog.csdn.net/tag/details.html?tag=vim' target=_blank>vim</a><a href='http://blog.csdn.net/tag/details.html?tag=emacs' target=_blank>emacs</a><a href='http://blog.csdn.net/tag/details.html?tag=insert' target=_blank>insert</a><a href='http://blog.csdn.net/tag/details.html?tag=dictionary' target=_blank>dictionary</a><a href='http://blog.csdn.net/tag/details.html?tag=ubuntu' target=_blank>ubuntu</a><a href='http://blog.csdn.net/tag/details.html?tag=%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f' target=_blank>正则表达式</a></div>
+
+
+    
+<div id="article_content" class="article_content">
+<p><span>
+<p>使用vi编辑器的时候发现，ESC键不能返回到默认模式，输入：help命令，发现ubuntu默认安装的vim-tiny,很多功能不完善。所有为了方便，需要安装完整的vim。注意：在ubuntu系统中vi和vim命令实际上是都是使用vim。</p>
+<p><span>
+<p>Vim 有以下几个模式：</p>
+<ul>
+<li>正常（normal）模式，缺省的编辑模式；下面如果不加特殊说明，提到的命令都直接在正常模式下输入；任何其它模式中都可以通过键盘上的 Esc 键回到正常模式。</li>
+<li>命令（command）模式，用于执行较长、较复杂的命令；在正常模式下输入&ldquo;:&rdquo;（一般命令）、&ldquo;/&rdquo;（正向搜索）或&ldquo;?&rdquo;（反向搜索）即可进入该模式；命令模式下的命令要输入回车键（Enter）才算完成。</li>
+<li>插入（insert）模式，输入文本时使用；在正常模式下键入&ldquo;i&rdquo;（insert）或&ldquo;a&rdquo;（append）即可进入插入模式（也有另外一些命令，如&ldquo;c&rdquo;，也可以进入插入模式，但这些命令有其它的作用）。</li>
+<li>可视（visual）模式，用于选定文本块；可以在正常模式下输入&ldquo;v&rdquo;（小写）来按字符选定，输入&ldquo;V&rdquo;（大写）来按行选定，或输入&ldquo;Ctrl-V&rdquo;来按方块选定。</li>
+<li>选择（select）模式，与普通的 Windows 编辑器较为接近的选择文本块的方式；在以可视模式和选择模式之一选定文本块之后，可以使用&ldquo;Ctrl-G&rdquo;切换到另一模式&mdash;&mdash;该模式很少在 Linux 上使用，本文中就不再介绍了。</li>
+</ul>
+</span></p>
+<p>安装方法：</p>
+<p>方法一：apt-get install vim</p>
+<p>系统将安装vim, vim-runtime 软件包，系统推荐安装vim-scripts,vim-doc,ctags,最好安装这些推荐的软件包，因为它们可以使vim支持语法高亮显示。</p>
+<p>方法二：使用synaptic package manager (新立得软件包管理器)</p>
+<p>安装vim,vim-runtime,vim-scripts,vim-gnome,vim-doc,exuberant-ctags软件包。</p>
+<p>安装完毕后，在终端输入vim命令即可，安装的版本是7.2.245。输入：help命令显示如下：</p>
+<p>~ VIM - Vi IMproved</p>
+<p>~</p>
+<p>~ version 7.2.245</p>
+<p>~ by Bram Moolenaar et al.</p>
+<p>~ Vim is open source and freely distributable</p>
+<p>~</p>
+<p>~ Become a registered Vim user!</p>
+<p>~ type :help register&nbsp;for information</p>
+<p>~</p>
+<p>~ type :q&nbsp;to exit</p>
+<p>~ type :help&nbsp;or&nbsp;for on-line help</p>
+<p>~ type :help version7&nbsp;for version info</p>
+<p>Vi 和 vim 区别</p>
+<p>vim的这些优势主要体现在以下几个方面：</p>
+<p>1、多级撤消我们知道在vi里，按 u只能撤消上次命令，而在vim里可以无限制的撤消。</p>
+<p>2、易用性vi只能运行于unix中，而vim不仅可以运行于unix,windows ,mac等多操作平台。</p>
+<p>3、语法加亮vim可以用不同的颜色来加亮你的代码。</p>
+<p>4、可视化操作就是说vim不仅可以在终端运行，也可以运行于x window、 mac os、 windows。</p>
+<p>5、对vi的完全兼容某些情况下，你可以把vim当成vi来使用。</p>
+<p>VIM和Emacs比较</p>
+<p>----------------------------------------------------------------------------</p>
+<p>VIM和Emacs的相似之处:</p>
+<p>首先都是全功能的编辑器</p>
+<p>缩进,重新编排格式</p>
+<p>语法高亮</p>
+<p>无限制的"撤消"和"重做"</p>
+<p>多个剪切,粘贴板</p>
+<p>拼写检查</p>
+<p>多语言支持</p>
+<p>可扩展性强</p>
+<p>宏,函数</p>
+<p>自定义键</p>
+<p>自己定制.emacs和.vimrc(很多人的这两个文件都写得跟天书似的,可能主要考察一下记忆力)</p>
+<p>操作文本串,多行,矩形块</p>
+<p>几乎可以识别任何文本文件类型</p>
+<p>没有行长度和文件大小的限制(操作系统有限制除外)</p>
+<p>自动识别UNIX,MAC,MSWIN的行结尾符</p>
+<p>二进制文件编辑</p>
+<p>都有很好的帮助和用户手册以及免费的电子书</p>
+<p>都有TTY和GUI版本</p>
+<p>可以在很多操作系统上运行(*nix,win32,Mac...)</p>
+<p>都有父老兄弟:Emacs有Xemacs及其派生的Epsilon,JOVE等;VIM有其老头子VI和兄Nvi,Vile,Elvis等</p>
+<p>都是FREE SOFTWARE,可以方便地得到</p>
+<p>-----------------------------------------------------------------------------</p>
+<p>VIM 和 Emacs的不同:</p>
+<p>vim主要设计用来写程序的,当然也可操作众多的文本文件;Emacs主要设计用来文本操作的</p>
+<p>vim体积小启动快;相反,Emacs体积大,启动慢</p>
+<p>VIM专注于文本编辑;而Emacs功能强大:除了VIM常干的事外,还有排版,收发邮件,IDE,播放MP3,日程安排,系统管理,浏览网页,甚至教你做一道精美的川菜....,功能强大到BT的地步. 故若说VIM是一种工具的话,则Emacs则可认为是一种"生活平台"</p>
+<p>VIM学习曲线陡峭而较短;Emacs 学习曲线平缓而较长</p>
+<p>VIM是有模式的编辑器;而Emacs是没有模式的(现在的很多编辑器和word处理器都是无模式的)</p>
+<p>"无模式"的优缺点</p>
+<p>常见而显得亲近</p>
+<p>对于标准的下拉菜单式GUI程序,容易适应</p>
+<p>其命令有复杂的语法和很难敲的多个键的组合,因键盘上的键是有限的,所以恨不得加个脚踏</p>
+<p>甚至有些键在标准键盘上都没有</p>
+<p>"有模式"的优缺点</p>
+<p>容易迷惑现在在那个模式下:Normal mode ,Visual mode ,Select mode ,Insert mode ,Command-line mode, ex mode ; ^X mode, operator-pending mode, Replace mode, Insert normal mode, Insert Visual mode, Insert Select mode我能想起的mode就这些---这么多,头都大了.</p>
+<p>在模式间频繁转换是令人讨厌的</p>
+<p>可以有更多的按键用于命令</p>
+<p>几乎所有的时间手指一般都停留在"normal position",故而效率高</p>
+<p>Emacs的GUI更容易操作大体积的文本工作;gvim与Xwindow接合得更好--看起来感觉更舒服一些:好看一些的字体,好一点的语法高亮,好看一点的工具条等等. Emacs的TTY版本与GUI版本看起来非常相似, 而VIM的TTY版本和GUI版本(gvim)就有很大的不同。</p>
+<p>下面是两位高手的文章：（<a href="http://www.pconline.com.cn/pcedu/soft/gj/photo/0609/865628.html">王垠之《Emacs是一种信仰！世界最强编辑器介绍》</a>，<a href="http://www.pconline.com.cn/pcedu/soft/gj/photo/0609/877033.html">Dieken之《程序员的编辑器&mdash;&mdash;Vim》</a></p>
+<p>关于window下使用vim的使用请看：<a href="http://blog.sina.com.cn/s/blog_46dac66f010005kw.html">http://blog.sina.com.cn/s/blog_46dac66f010005kw.html</a></p>
+<p>VIM使用说明</p>
+<p>我们使用的大多数编辑器，都可以直接在编辑区输入字符，并且能够通过一些快捷键来完成一些控制功能，比如使用方向键移动光标，使用BackSpack或者Delete键删除文字，使用PgUp和PgDn翻页，使用Home和End来定位行首和行末&hellip;&hellip;</p>
+<p>而Vim是一个带模式的编辑器，同样的按键，在不同模式下，具有不同的功能定义。例如h、j、k、l在编辑模式下输入相应的字符，在普通模式下却相当于方向键的作用。</p>
+<p>由于需要切换模式，Vim的使用起来略显繁琐。不过优点也显而易见：您只要把手安安稳稳的放在打字区就可以了，而不需要使用诸如方向键、排版键、小键盘等需要挪开双手的键位，从而提高了您的效率和专注程度。事实上，Vim的前身Vi诞生的时候，键盘上还没有方向键、排版键和小键盘：）</p>
+<p>命令</p>
+<p>----</p>
+<p>vi [文件名]</p>
+<p>vim [文件名]</p>
+<p>使用Vim编辑文件</p>
+<p>vimtutor [语言]</p>
+<p>vim教程，相当于使用Vim编辑器以只读模式打开教程文件。您无论对这个文件作了什么，都会在退出后恢复原来的样貌。与只读模式的区别在于，它不会没有眼色的提醒您，现在的状态为只读模式。您可以使用它作一些练习</p>
+<p>您可以指定教程文件的语言，如果使用本地语言(ZH_cn)出现乱码，您可以尝试使用英语</p>
+<p>vimtutor en</p>
+<p>vimdiff [文件1] [文件2] [其它文件]&hellip;&hellip;</p>
+<p>配置文件</p>
+<p>--------</p>
+<p>Vim的全局配置文件为&ldquo;/etc/vim/vimrc&rdquo;，用户配置文件为&ldquo;~/.vimrc&rdquo;，&ldquo; " &rdquo;起始的行为注释行。我们提供的配置项，您直接加入配置文件就可以了</p>
+<p>您可以先对Vim进行一些简单的配置：</p>
+<p>"设定文件编码</p>
+<p>set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</p>
+<p>"开启语法加亮</p>
+<p>syntax on</p>
+<p>"配色风格</p>
+<p>colorscheme pablo</p>
+<p>"设定行距 GUI界面中生效</p>
+<p>set linespace=4</p>
+<p>"设定GUI选项</p>
+<p>"set guioptions=gmrLtT m:菜单 T:工具栏</p>
+<p>set guioptions=gmrLt</p>
+<p>"设定Tab键缩进的空格数</p>
+<p>set tabstop=4</p>
+<p>"设定编辑器将多少空格视为一个缩进</p>
+<p>set shiftwidth=4</p>
+<p>"设定折叠方式</p>
+<p>"set foldmethod=indent</p>
+<p>"以下字符将被视为单词的一部分 (ASCII)：</p>
+<p>"set iskeyword+=33-47,58-64,91-96,123-128</p>
+<p>模式介绍</p>
+<p>--------</p>
+<p>Vim常见的模式有：普通模式、插入模式、命令模式，另外我们也会经常用到可视模式。</p>
+<p>Vim启动时进入普通模式；或者在其它模式下，按下Esc键，便可以回到普通模式。</p>
+<p>使用&ldquo;vimtutor en&rdquo;命令进入教程，现在是普通模式。随便按几下&ldquo;j、k、l、h&rdquo;键，您会发现光标的位置发生改变。</p>
+<p>按下&ldquo;i&rdquo;键，编辑器底部出现了&ldquo;-- 插入 --&rdquo;或者&ldquo;-- insert --&rdquo;，您进入了插入模式。随便按几下&ldquo;j、k、l、h&rdquo;，您会发现相应的字符出现在编辑区，现在还可以通过方向键来移动光标。</p>
+<p>可能您觉得使用方向键移动光标不是什么问题，但是习惯了Vim后，您会认为方向键太麻烦了，简单不能容忍！好了，现在按下Esc键回到普通模式，我们又可以使用&ldquo;j、k、h、l&rdquo;来移动光标了。</p>
+<p>在普通模式下，按下&ldquo;:&rdquo;键（也就是Shift+;），在编辑器底部出现了一个&ldquo;:&rdquo;，您进入了命令模式。在&ldquo;:&rdquo;后输入一个命令&ldquo;new&rdquo;，回车后，编辑器被分割为上下两栏。</p>
+<p>为了方便起见，我们在命令前加一个&ldquo;:&rdquo;来表示命令模式下输入的命令，像这样</p>
+<p>:vnew</p>
+<p>一个命令能够以一些规则简化，上面的命令也可以写为这种形式</p>
+<p>:vne</p>
+<p>现在您的编辑区一定弄的四分五裂，您可以使用命令&ldquo;:quit&rdquo;来关闭当前栏，直接用简写就可以了</p>
+<p>:q</p>
+<p>这个命令是退出编辑器，如果编辑区被分成多栏，则是退出当前栏。</p>
+<p>执行完一个命令（按下回车后），编辑器会自动回到普通模式。如果您想不执行当前命令，直接回到普通模式，您可以按下Esc键。</p>
+<p>按下&ldquo;v&rdquo;键，您进入了可视模式，可以使用&ldquo;j、k、l、h&rdquo;移动光标，高亮选取文本 。</p>
+<p>事实上，可视模式相当于高亮选取文本后的普通模式。</p>
+<p>可视模式具有子模式，以行为单位进行选取的可视行模式，使用&ldquo;V&rdquo;键进入（也就是Shift+v）；和以块为单位进行选取的可视块模式，使用&ldquo;Ctrl+v&rdquo;键进入。</p>
+<p>模式切换</p>
+<p>--------</p>
+<p>好了，现在我们总结一下模式间切换的方法</p>
+<p>其它模式==&gt;普通模式</p>
+<p>Esc</p>
+<p>普通模式==&gt;插入模式</p>
+<p>i 在光标前插入 I 在行首插入</p>
+<p>a 在光标后插入 A 在行末插入</p>
+<p>o 在当前行之下新建行 O 在当前行之上新建行</p>
+<p>r 替换当前字符 R 从当前字符开始替换</p>
+<p>普通模式==&gt;命令模式</p>
+<p>:</p>
+<p>普通模式==&gt;可视模式</p>
+<p>v 可视模式</p>
+<p>V 可视块模式</p>
+<p>可视块模式</p>
+<p>移动</p>
+<p>----</p>
+<p>在普通模式中，您可以使用以下方式移动光标</p>
+<p>j 向下</p>
+<p>k 向上 k</p>
+<p>l 向右 h l</p>
+<p>h 向左 j</p>
+<p>您可以使用其它更有效率的方式移动光标</p>
+<p>w 下一个单词词首 W 将特殊符号视为单词的一部分</p>
+<p>b 上一个单词词首 B 同上</p>
+<p>e 单词末尾 E 同上</p>
+<p>0 行首 ^ 行首文字（行首空格之后）</p>
+<p>$ 行末</p>
+<p>H 页面顶部</p>
+<p>M 页面中部</p>
+<p>L 页面底部</p>
+<p>在其它模式中，您可以使用方向键移动光标，不过我们不推荐您那样作，您可以在配置文件中绑定插入模式下的功能键</p>
+<p>noremap!</p>
+<p>noremap!</p>
+<p>noremap!</p>
+<p>noremap!</p>
+<p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+<p>&lt;作用范围&gt; &lt;键位&gt; &lt;功能&gt;</p>
+<p>其中，map!绑定的键盘映射，作用于所有模式；inoremap!绑定的映射，仅作用于插入模式。</p>
+<p>数字参数</p>
+<p>--------</p>
+<p>您也可以使用数字参数，来重复执行。例如</p>
+<p>100j 执行100次j键，向下100行</p>
+<p>标记</p>
+<p>----</p>
+<p>您可以在当前光标处作一个标记，以便快速返回</p>
+<p>m&lt;标记名称&gt; 定义标记。标记名称为一个字符</p>
+<p>`&lt;标记名称&gt; 返回标记</p>
+<p>mx 将当前光标处定义为标记 x</p>
+<p>`x 返回标记 x</p>
+<p>浏览</p>
+<p>----</p>
+<p>下翻一页 下翻半页</p>
+<p>上翻一页 上翻半页</p>
+<p>gg 文件首行</p>
+<p>G 文件末行</p>
+<p>&lt;行号&gt;G 按行号转到相应行</p>
+<p>&lt;1~100&gt;% 按百分比转到相应的行数</p>
+<p>zz 将光标所在行调整至页面中间</p>
+<p>下卷一行</p>
+<p>上卷一行</p>
+<p>Tips：gg定位到文件首行，V进入可视行模式，G定位到文件末行，实现类似&ldquo;全选&rdquo;的功能。依次按下 g g V(Shift+v) G(Shift+g)</p>
+<p>编辑</p>
+<p>----</p>
+<p>x 剪切当前字符</p>
+<p>dd 剪切当前行</p>
+<p>y 复制可视模式选取字符</p>
+<p>yy 复制当前行</p>
+<p>p 在光标后粘贴 P 在光标前粘贴</p>
+<p>u 撤消</p>
+<p>重做</p>
+<p>逐字克隆上一行内容</p>
+<p>逐字克隆下一行内容</p>
+<p>寄存器操作</p>
+<p>----------</p>
+<p>Vim可以将不同字段剪切或复制到不同寄存器中，您可以从不同寄存器中取出内容后粘贴</p>
+<p>"&lt;寄存器名称&gt; 按下&ldquo;"&rdquo;键和另一个字符键，便可以定义一个寄存器。例如：</p>
+<p>"a "1</p>
+<p>定义寄存器后直接进行操作</p>
+<p>"ayy 将当前行复制到寄存器 a 中</p>
+<p>"ap 将寄存器 a 中的内容粘贴到光标之后</p>
+<p>Tips：通常情况下，寄存器 + (" +(Shift+=))对应X下的剪贴板。您在其它程序中复制的内容，可以使用 "+p 粘贴到Vim中；您在Vim中，可以使用 "+y 将内容复制到剪贴板，再粘贴到其它程序中</p>
+<p>没有指定寄存器时，Vim使用&ldquo;无名寄存器&rdquo;存储内容</p>
+<p>搜索和替换</p>
+<p>----------</p>
+<p>按下&ldquo;/&rdquo;键，编辑器底部会出现&ldquo;/&rdquo;符号，接着输入字符串，便可以进行搜索</p>
+<p>/ 向下搜索 ? 向上搜索</p>
+<p>n 搜索下一个</p>
+<p>N 搜索上一个</p>
+<p>:s/&lt;源字符串&gt;/&lt;目标字符串&gt; 将源字符串替换为目标字符串</p>
+<p>:s/&lt;源字符串&gt;/&lt;目标字符串&gt;/g 替换当前行中所有符合条件的字符串</p>
+<p>:&lt;行号1&gt;,&lt;行号2&gt;s/&lt;源字符串&gt;/&lt;目标字符串&gt;/g 在指定行中进行替换</p>
+<p>:%s/&lt;源字符串&gt;/&lt;目标字符串&gt;/g 全文替换</p>
+<p>正则表达式</p>
+<p>----------</p>
+<p>在搜索和替换时，可以使用正则表达式进行匹配</p>
+<p>宏</p>
+<p>--</p>
+<p>您可以将一系列的操作录制为一个宏，然后执行它</p>
+<p>q&lt;宏名称&gt; 开始录制宏。宏名称为一个字符</p>
+<p>q 录制中按下&ldquo;q&rdquo;键，结束录制</p>
+<p>@&lt;宏名称&gt; 执行宏</p>
+<p>插入模式下的快捷键</p>
+<p>------------------</p>
+<p>&lt;寄存器名称&gt; 输入指定寄存器内容</p>
+<p>&lt;2个字符&gt; 输入二合字符</p>
+<p>&lt;数字&gt; 通过数字编码输入字符</p>
+<p>&lt;键位&gt; 输入键位的名称</p>
+<p>键绑定、缩写</p>
+<p>------------</p>
+<p>前面我们已经向您介绍了键绑定，</p>
+<p>map!</p>
+<p>尖括号及其中的内容，为Vim配置文件的约定，分别描述了按键和功能，表示将功能编写到按键上。如果绑定的只是普通字符，例如：</p>
+<p>map! xxx XXXXX</p>
+<p>表示将&ldquo;XXXXX&rdquo;绑定到&ldquo;xxx&rdquo;上。当您键入&ldquo;xxx&rdquo;时，编辑器会自动替换为&ldquo;XXXXX&rdquo;。</p>
+<p>如果您只是想将字符串绑定为缩写，方便输入，我们建议您使用&ldquo;iabbrev&rdquo;来绑定。例如：</p>
+<p>iabbrev ubt Ubuntu</p>
+<p>在插入模式下键入&ldquo;ubt&rdquo;，编辑器会自动替换为&ldquo;Ubuntu&rdquo;。</p>
+<p>您可以将&ldquo;iabbrev&rdquo;命令缩写为&ldquo;iab&rdquo;，例如：</p>
+<p>iab ubt Ubuntu</p>
+<p>以上命令，您可以直接在命令模式下输入，临时启用。也可以写入配置文件，永久启用。</p>
+<p>单词补全</p>
+<p>--------</p>
+<p>下一个匹配项</p>
+<p>上一个匹配项</p>
+<p>您可以在配置文件中定义补全的方式</p>
+<p>"自动补全方式：(使用逗号分隔)</p>
+<p>set complete=k,.</p>
+<p>" . 当前文件</p>
+<p>" b 已被装缓冲区,但是没有在窗口内的文件</p>
+<p>" d 在当前的文件中定义和由#include包含进来的文件</p>
+<p>" i 由#include包含进来的文件</p>
+<p>" k 由dictionary选项定义的文件</p>
+<p>" kfile 名为{file}的文件</p>
+<p>" t 标记(tags)文件</p>
+<p>" u 没有载入的缓冲区</p>
+<p>" w 在其他窗口中的文件</p>
+<p>"设定自动补全字典 ：</p>
+<p>set dictionary=path</p>
+<p>命令模式</p>
+<p>--------</p>
+<p>前面介绍了普通模式和插入模式。我们发现，普通模式主要用来浏览和修改文本内容，而插入模式则用来向文本中添加内容。</p>
+<p>而命令模式则多用于操作文本文件（而不是操作文本文件的内容），例如保存文件；或者用来改变编辑器本身的状态，例如设定多栏窗口、标签或者退出编辑器&hellip;&hellip;</p>
+<p>w(rote) 将改变写入文件</p>
+<p>:w</p>
+<p>q(uit) 退出编辑器</p>
+<p>:q</p>
+<p>某些情况下，编辑器会阻止命令的执行。例如您修改了文件，而没有保存，那么您使用&ldquo;:q&rdquo;命令退出时，编辑器就不会执行这条命令，而是提醒您保存文件。</p>
+<p>这个时候，您可以在命令末尾追加&ldquo;!&rdquo;来强制执行命令</p>
+<p>:&lt;命令&gt;!</p>
+<p>例如&ldquo;:q!&rdquo;，即便您没有保存已修改的文件，使用此命令，编辑器也会放弃修改而强行退出</p>
+<p>以&ldquo;!&rdquo;引导一个Shell命令，则可以从Vim临时切换到Shell中，执行一个Shell</p>
+<p>:!&lt;命令&gt;</p>
+<p>例如&ldquo;:!ls&rdquo;</p>
+<p>多栏窗口</p>
+<p>--------</p>
+<p>您可以使用以下命令，将当前窗口水平分为两栏</p>
+<p>:new</p>
+<p>新建一栏空白窗口</p>
+<p>:split</p>
+<p>将当前文件分两栏显示</p>
+<p>同理，您可以使用下列命令，将当前窗口水平分为两栏</p>
+<p>:vnew</p>
+<p>:vsplit</p>
+<p>先按下键，再按下方向键&ldquo;j、k、l、h&rdquo;，您可以切换到其它栏；在当前栏中使用&ldquo;:q&rdquo;命令，可以退出当前栏，也可以使用其它命令，对当前栏作出修改</p>
+<p>如果您希望当前命令在所有栏中生效，您可以在命令的末尾追加&ldquo;all&rdquo;</p>
+<p>:&lt;命令&gt;all</p>
+<p>例如：</p>
+<p>:qall</p>
+<p>如果您希望这条命令强制执行，那么&ldquo;!&rdquo;位于命令的最末</p>
+<p>:&lt;命令&gt;all!</p>
+<p>例如：</p>
+<p>:qall! 强行退出所有栏窗口</p>
+<p>标签页</p>
+<p>------</p>
+<p>Vim在7以后的版本，开始支持标签页的功能</p>
+<p>:tabnew 新建一个标签</p>
+<p>:tabnext 转到下一个标签</p>
+<p>:tabprevious 转到上一个标签</p>
+<p>多数情况下，您可以使用鼠标点击标签进行切换。</p>
+</span></p>
+</div>
+
+<div class="share_buttons" id="sharePanel"></div>
+<!--192.168.100.34-->
+<div class="article_next_prev">
+    <li class="prev_article"><span>上一篇：</span><a href="/alfredtofu/article/details/6296218">uva 10791 - Minimum Sum LCM</a></li>
+    <li class="next_article"><span>下一篇：</span><a href="/alfredtofu/article/details/6299099">uva 575 - Skew Binary</a></li>
+</div>
+
+
+    
+</div>
+<div id="ad_cen">
+<script type="text/javascript" >BAIDU_CLB_SLOT_ID = "117306";</script>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
+</div>
+<script type="text/javascript">
+    //new Ad(4, 'ad_cen');
+</script>
+<div id="comment_title" class="panel_head">查看评论<a name="comments"></a></div>
+<div id="comment_list"></div>
+<div id="comment_bar"></div>
+<div id="comment_form"></div>
+<div class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+<script type="text/javascript">
+    var fileName = '6298948';
+    var commentscount = 0;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+<div id="ad_bot"></div>
+<script type="text/javascript">
+    new Ad(5, 'ad_bot');
+</script>
+<div id="report_dialog"></div>
+
+<div id="d-top" style="display:none;">
+<a id="d-top-a" href="#" title="回到顶部">
+<img src="http://static.blog.csdn.net/images/top.png" alt="TOP" /></a>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var d_top=$('#d-top');
+        document.onscroll=function(){
+            var scrTop=(document.body.scrollTop||document.documentElement.scrollTop);
+            if(scrTop>500){
+                d_top.show();
+            }else{
+                d_top.hide();
+            }
+        }
+        $('#d-top-a').click(function(){
+            scrollTo(0,0);
+            this.blur();
+            return false;
+        });
+    });
+</script>
+
+<div class="clear"></div>
+</div>
+</div>
+
+<div id="side">
+<div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/alfredtofu" target="_blank">
+    <img src="http://avatar.csdn.net/8/6/A/1_alfredtofu.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/alfredtofu" class="user_name" target="_blank">alfredtofu</a></span>
+</div>
+<div class="interact">
+<a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+<a href="javascript:void(0);" class="letter" onclick="loginto(1)" title="[发私信]"></a>
+</div>
+<div id="blog_medal">
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>70474次</span></li>
+    <li>积分：<span>2468分</span></li>
+    <li>排名：<span>第2967名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>177篇</span></li>
+    <li>转载：<span>22篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>48条</span></li>
+</ul>
+</ul>
+</div>
+
+<div class="panel">
+<ul class="panel_body" style="padding:0;">
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script> 
+<script type="text/javascript"> 
+BAIDU_CLB_preloadSlots("724643","117306"); 
+</script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("724643");</script> 
+</ul>
+</div>
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="submit" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/730546">android</a><span>(16)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/781497">c/c++</a><span>(6)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/784103">dp</a><span>(25)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/781999">html</a><span>(6)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/731996">java</a><span>(14)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/732963">mysql</a><span>(2)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/778648">STL</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/804840">unix/linux</a><span>(9)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/733346">win7</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/783118">个人日志</a><span>(0)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/779661">分类</a><span>(3)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/805752">图像处理</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/765665">数据结构</a><span>(4)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/804133">数论</a><span>(22)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/766262">算法之路</a><span>(118)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/787544">贪心</a><span>(2)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/841103">数据挖掘 dataing mining</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/863362">ruby</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/875306">TCP/IP SOCKET</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/903342">计算机网络</a><span>(2)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/934753">complier principle</a><span>(1)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/alfredtofu/article/category/1114710">CV</a><span>(1)</span>
+</li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="http://blog.csdn.net/alfredtofu/article/month/2012/04">2012年04月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2012/01">2012年01月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/11">2011年11月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/10">2011年10月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/09">2011年09月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/08">2011年08月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/07">2011年07月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/05">2011年05月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/04">2011年04月</a><span>(29)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/03">2011年03月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/02">2011年02月</a><span>(44)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2011/01">2011年01月</a><span>(68)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2010/12">2010年12月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2010/09">2010年09月</a><span>(16)</span></li><li><a href="http://blog.csdn.net/alfredtofu/article/month/2010/08">2010年08月</a><span>(2)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head"><span>阅读排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/alfredtofu/article/details/5865253" title="CursorAdapter">CursorAdapter</a><span>(2477)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/7170758" title="新浪微博客户端源码 android">新浪微博客户端源码 android</a><span>(2444)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6222241" title="检测到 Mac 文件格式: 请将源文件转换为 DOS 格式或 UNIX 格式">检测到 Mac 文件格式: 请将源文件转换为 DOS 格式或 UNIX 格式</a><span>(1910)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6303305" title="RGB与YCbCr颜色空间的转换">RGB与YCbCr颜色空间的转换</a><span>(1835)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6298948" title="安装vim 以及Vim介绍比较">安装vim 以及Vim介绍比较</a><span>(1637)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6844294" title="4750G geforce gt 520m ubuntu 10.04显卡驱动">4750G geforce gt 520m ubuntu 10.04显卡驱动</a><span>(1218)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6720658" title="ubuntu11.04(unix 就可以了) 共享文件以及支持上传文件">ubuntu11.04(unix 就可以了) 共享文件以及支持上传文件</a><span>(1172)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6192860" title="poj 1014 Dividing 多重背包 二进制拆分">poj 1014 Dividing 多重背包 二进制拆分</a><span>(1101)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/7029170" title="关于android真机测试(linux系统下)">关于android真机测试(linux系统下)</a><span>(954)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6212242" title="省赛了">省赛了</a><span>(912)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/alfredtofu/article/details/6116807" title="sicily 1002">sicily 1002</a><span>(4)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6979414" title="linux下整站下载">linux下整站下载</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6109424" title="sicily 1152">sicily 1152</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/5865253" title="CursorAdapter">CursorAdapter</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6222241" title="检测到 Mac 文件格式: 请将源文件转换为 DOS 格式或 UNIX 格式">检测到 Mac 文件格式: 请将源文件转换为 DOS 格式或 UNIX 格式</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6212242" title="省赛了">省赛了</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6177644" title="sicily 1768">sicily 1768</a><span>(3)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6118857" title="sicily 1156">sicily 1156</a><span>(2)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6171044" title="sicily 1426">sicily 1426</a><span>(2)</span>
+</li>
+<li>
+<a href="/alfredtofu/article/details/6299115" title="uva 10110 - Light, more light">uva 10110 - Light, more light</a><span>(2)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend"></ul>
+</div>
+<script type="text/javascript">
+ new Ad(12, 'ad_commend');
+</script><div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+    <a href="/alfredtofu/article/details/6116807#comments">sicily 1002</a>
+    <p style="margin:0px;"><a href="/u011350418" class="user_name">u011350418</a>:
+虽说一开始就知道是深搜，但是这种循环套递归的写法真是妙啊！想破头都想不出来，可能因为我是初学者吧。。...
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6116807#comments">sicily 1002</a>
+    <p style="margin:0px;"><a href="/u011350418" class="user_name">u011350418</a>:
+牛人啊，哥你是中大的吗
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6194647#comments">poj 1252 zoj 1558 Euro Efficiency 完全背包</a>
+    <p style="margin:0px;"><a href="/liangliang8086" class="user_name">liangliang8086</a>:
+麻烦问下，const int MAXV = 100 * 100 + 100 + 1; MAXV 为什...
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6118857#comments">sicily 1156</a>
+    <p style="margin:0px;"><a href="/jm905111218" class="user_name">jm905111218</a>:
+哦，我懂了，由于自己跟自己异或为0，所以当把所有的index跟left、right都异或的话就只剩下...
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6118857#comments">sicily 1156</a>
+    <p style="margin:0px;"><a href="/jm905111218" class="user_name">jm905111218</a>:
+那个用异或得到根节点的地方没看懂....
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6310943#comments">virtualbox 出现提示Kernel driver not installed (rc=-1908) 错误的解决方法</a>
+    <p style="margin:0px;"><a href="/qiaofangjie" class="user_name">qiaofangjie</a>:
+您好，我的遇到同样的问题，但还是解决不了ls /usr/src/linux-headers-3.5....
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6299115#comments">uva 10110 - Light, more light</a>
+    <p style="margin:0px;"><a href="/alfredtofu" class="user_name">alfredtofu</a>:
+@LookEsat:you are right~
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6299115#comments">uva 10110 - Light, more light</a>
+    <p style="margin:0px;"><a href="/LookEsat" class="user_name">LookEsat</a>:
+int的范围是2^-31 ~ 2^31 - 1  不是32
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/7170758#comments">新浪微博客户端源码 android</a>
+    <p style="margin:0px;"><a href="/yanxj123" class="user_name">yanxj123</a>:
+学习
+    </p>
+    </li>
+    <li>
+    <a href="/alfredtofu/article/details/6116807#comments">sicily 1002</a>
+    <p style="margin:0px;"><a href="/alfredtofu" class="user_name">alfredtofu</a>:
+@chenhq1991:亲，你是？
+    </p>
+    </li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js?v=1.1"></script>
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=918253"></script>
+
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js?' + Math.floor(new Date()/120000).toString(36) + '="></'+'script>');
+</script>
+
+<script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js?v=1"></script>
+
+
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+
+<script type="text/javascript" src="http://zz.csdn.net/js/count.js"></script>
+
+</div>
+</body>
+</html>

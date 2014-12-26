@@ -1,0 +1,12 @@
+http://www.cnblogs.com/lovemo1314/archive/2011/07/13/2105472.html
+
+1>filename
+# 重定向stdout到文件"filename". 
+1>>filename
+# 重定向并追加stdout到文件"filename". 
+2>filename
+# 重定向stderr到文件"filename". 
+2>>filename
+# 重定向并追加stderr到文件"filename". 
+&>filename
+# 将stdout和stderr都重定向到文件"filename". 

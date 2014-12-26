@@ -1,0 +1,10 @@
+android开发中r.java不能自动更新
+
+不能更新的原因:
+   1.在xml文件中代码错误或者格式错误
+   2.eclipse 编译器是老版本
+   3.布局文件的文件名有大写字母
+   4.含有相同文件名、格式的xml文件
+解决方法:
+ 1.找到出错的xml文件中的错误代码格式改正，并执行project —clean 操作
+ 2.eclipse 选择Project--Build Automaticaly ,将上面的勾去掉

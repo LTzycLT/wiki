@@ -1,0 +1,10 @@
+vim74:  
+/opt/share/vim/vim74
+~/.vimrc
+
+vim73: 
+/usr/share/vim/vim73
+/etc/vim/vimrc
+
+让 Terminal 使用 Solarized 配色
+http://blog.csdn.net/lucktroy/article/details/7825805

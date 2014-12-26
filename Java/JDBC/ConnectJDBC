@@ -1,0 +1,28 @@
+String dburl = "jdbc:mysql://localhost:3306/Androidgame";
+String user = "root";
+String password ="123456";
+String driver = "com.mysql.jdbc.Driver";
+ResultSet rs = null;
+Connection conn = null;
+PreparedStatement ps =null;
+String str;
+
+public ServiceSql(){
+	try{
+		Class.forName(driver);
+		conn  = DriverManager.getConnection(dburl,user,password);
+	}catch(Exception e){
+		System.out.print(e.getMessage());
+	}
+}
+
+String sql = "select * from player where pname=? ;";
+ps = conn.prepareStatement(sql);
+ps.setString(1, player);
+rs = ps.executeQuery();
+ps.executeUpdate();
+ps.close();
+
+
+
+

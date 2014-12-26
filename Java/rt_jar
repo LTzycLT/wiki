@@ -1,0 +1,1 @@
+Eclipse 默认把这些受访问限制的API设成了ERROR。只要把Windows-Preferences-Java-Complicer- Errors/Warnings里面的Deprecated and restricted API中的Forbidden references(access rules)选为Warning就可以编译通过。

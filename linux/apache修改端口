@@ -1,0 +1,10 @@
+修改/etc/httpd/conf/httpd.conf
+Listen 80 改为 Listen port
+启用ServerName 127.0.0.1:port
+
+修改防火墙，增加port端口权限
+/etc/sysconfig/iptables
+
+重启防火墙 /etc/init.d/iptables restart
+
+重启apache   httpd -k restart

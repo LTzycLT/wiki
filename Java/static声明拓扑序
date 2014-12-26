@@ -1,0 +1,14 @@
+static声明是先搞出拓扑序，如果存在环则会随机找个去环，切入时int为0,其他为null;
+例如
+public class A{
+	static int a=B.b+C.c;
+}
+public class B{
+	static int b=A.a+C.c;
+}
+public class C{
+	static int c=2;
+}
+a=4,b=2,c=2执行顺序C,B,A
+
+

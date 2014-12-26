@@ -1,0 +1,21 @@
+HttpClient 4：
+连接超时：
+
+httpclient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,60000);
+// 或者
+HttpConnectionParams.setConnectionTimeout(params, 6000);
+读取超时：
+
+httpclient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,60000);
+// 或者
+HttpConnectionParams.setSoTimeout(params, 60000);
+
+
+
+HttpClient 3：
+连接超时：
+
+httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(60000);
+读取超时：
+
+httpClient.getHttpConnectionManager().getParams().setSoTimeout(60000);

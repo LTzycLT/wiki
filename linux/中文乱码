@@ -1,0 +1,27 @@
+http://www.cnblogs.com/end/archive/2011/04/19/2021507.html
+
+gedit
+{
+命令方式
+gsettings set org.gnome.gedit.preferences.encodings auto-detected "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+图形方式
+运行dconf-editor
+展开/org/gnome/gedit/preferences/encodings
+auto-detected的Value中加入 'GB18030' ，加在UTF-8前面；
+}
+
+网页
+{
+cd /etc/fonts/conf.d/
+sudo gedit ./49-sansserif.conf
+倒数第4行string里的值改为wqy-zenhei
+}
+
+转换文件名编码{
+Windows下压缩的zip文件，在 Ubuntu下解开时，中文文件名会显示乱码，可以用convmv解决。
+安装convmv：
+sudo apt-get install convmv
+转换文件或目录：
+convmv -f gbk -t utf8 -r --notest *
+}

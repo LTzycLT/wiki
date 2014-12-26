@@ -1,0 +1,1 @@
+数据库插入string，太长会自动截断，hibernate则会报错

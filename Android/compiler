@@ -1,0 +1,20 @@
+重装操作系统后，要重新配置Android开发环境。配置成功后，添加原本项目时却出现了错误！
+Android requires compiler compliance level 5.0 or 6.0. Found '1.7' instead. Please use Android Tools > Fix Project Properties.
+解决方法：
+
+1.项目右键 ->android tools->Fix Project
+
+2.如果不可以，检查Project->Properties->Java Compiler
+
+确认JDK compliance被设置为1.6,并且enable specific seetings.
+
+经过这两步问题基本解决。
+
+另一个EEROR
+在更新Android SDK后，经常会遇到一个 “SDK Manager:failed to install” “Tools Can't Write” 之类的说Tools文件不能写的错误。如果安装过程中提示“SDK Manager:failed to install”，不要急，先退出，然后
+1.进入sdk的temp文件夹，会有一个下载好的tools_r06-windows.zip(名字可能有一点不一样)
+2.解压此文件，出现tools_r06-windows文件夹
+3.进入，直接将tools_r06-windows里的所有文件复制并覆盖掉sdk根目录的tools文件夹中的文件
+
+
+switch(String) 只能用于jdk1.7

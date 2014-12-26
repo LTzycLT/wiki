@@ -1,0 +1,4 @@
+rm core
+./xxxx
+ulimit -c 10000
+gdb xxxx core

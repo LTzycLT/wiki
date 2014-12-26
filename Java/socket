@@ -1,0 +1,2 @@
+Ctrl+C 会自动 close client socket 
+网络链接断开则不会，因此getInputStream依然会阻塞在那里。

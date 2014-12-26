@@ -1,0 +1,83 @@
+看例子：
+例子A：
+   String str1 = "java";
+   String str2 = "java";
+   System.out.print(str1==str2);
+地球上有点Java基础的人都知道会输出false，因为==比较的是引用，equals比较的是内容。不是我忽悠大家，你们可以在自己的机子上运行一 下，结果是true！原因很简单，String对象被放进常量池里了，再次出现“java”字符串的时候，JVM很兴奋地把str2的引用也指向了 “java”对象，它认为自己节省了内存开销。不难理解吧 呵呵
+例子B：
+   String str1 = new String("java");
+   String str2 = new String("java");
+   System.out.print(str1==str2);
+看过上例的都学聪明了，这次肯定会输出true！很不幸，JVM并没有这么做，结果是false。原因很简单，例子A中那种声明的方式确实是在 String常量池创建“java”对象，但是一旦看到new关键字，JVM会在堆中为String分配空间。两者声明方式貌合神离，这也是我把“如何创 建字符串对象”放到后面来讲的原因。大家要沉住气，还有一个例子。
+例子C：
+   String str1 = "java";
+   String str2 = "blog";
+   String s = str1+str2;
+   System.out.print(s=="javablog");
+再看这个例子，很多同志不敢妄言是true还是false了吧。爱玩脑筋急转弯的人会说是false吧……恭喜你，你会抢答了！把那个“吧”字去掉你就完 全正确。原因很简单，JVM确实会对型如String str1 = "java"; 的String对象放在字符串常量池里，但是它是在编译时刻那么做的，而String s = str1+str2; 是在运行时刻才能知道（我们当然一眼就看穿了，可是Java必须在运行时才知道的，人脑和电脑的结构不同），也就是说str1+str2是在堆里创建的， s引用当然不可能指向字符串常量池里的对象。没崩溃的人继续看例子D。
+例子D：
+   String s1 = "java";
+   String s2 = new String("java");
+   System.out.print(s1.intern()==s2.intern());
+intern()是什么东东？反正结果是true。如果没用过这个方法，而且训练有素的程序员会去看JDK文档了。简单点说就是用intern()方法就 可以用“==”比较字符串的内容了。在我看到intern()方法到底有什么用之前，我认为它太多余了。其实我写的这一条也很多余，intern()方法 还存在诸多的问题，如效率、实现上的不统一……
+例子E：
+   String str1 = "java";
+   String str2 = new String("java");
+   System.out.print(str1.equals(str2));
+无论在常量池还是堆中的对象，用equals()方法比较的就是内容，就这么简单！
+ 
+以上内容引用自:http://hi.baidu.com/dairywg/blog/item/495f81b11885fa500823027f.html
+注意以下java代码中的 C2() 是上面文章中没有提到的。
+ 
+package com.nba;
+
+public class StringCompare {
+  public static void A() {
+    String str1 = "java";
+    String str2 = "java";
+    System.out.println(str1 == str2);  //true
+  }
+  public static void B() {
+    String str1 = new String("java");
+    String str2 = new String("java");
+    System.out.println(str1 == str2);  //false
+  }
+  public static void C() {
+    String str1 = "java";
+    String str2 = "blog";
+    String s = str1 + str2;
+    System.out.println(s == "javablog");  //false
+  }
+  public static void C2() {
+    String str1 = "javablog";
+    String str2 = "java"+"blog";    //在编译时被优化成String str2 = "javablog";
+    System.out.println(str1 == str2);  //true
+  }
+  public static void D() {
+    String s1 = "java";
+    String s2 = new String("java");
+    System.out.println(s1.intern() == s2.intern());  //true
+  }
+
+  public static void E() {
+    String str1 = "java";
+    String str2 = new String("java");
+    System.out.println(str1.equals(str2));  //true
+  }
+  
+  public static void main(String[] args){
+    A();
+    B();
+    C();
+    C2();
+    D();
+    E();
+  }
+}
+输出============
+true
+false
+false
+true
+true
+true

@@ -1,0 +1,38 @@
+ubuntu 安装jdk7，现在来总结一下：
+第一步：下载jdk-7-linux-i586.tar.gz
+直接在ORACLE的官网中下载就可以:
+http://www.oracle.com/technetwork/java/javase/downloads/java-se-jdk-7-download-432154.html
+PS：要注意系统版本的选择，32位 还是 64位，uname -a 命令即可知道答案。
+第二步：解压安装
+接着就是解压tar.gz的文件了。。。
+tar -xzf jdk-7-linux-i586.tar.gz
+
+接着就是解压出来的文件夹移动到/usr/lib/jvm的目录下
+在这之前当然需要你拥有root的权限 su -l 再输入root账户的密码，同时也需要你在/usr/lib目录下新建一个文件夹 mkdir /usr/lib/jvm。
+做好这些准备之后，我们就可以吧jdk的文件移动我们想要的位置了。
+mv jdk1.7.0 /usr/lib/jvm
+为了方便配置环境变量，我们把jdk的文件改名一下，网上普遍把jdk的文件改名为jdk-7-sun。
+mv /usr/lib/jvm/jdk1.7.0 /usr/lib/jvm/java-7-sun
+第三步：修改环境变量
+vim ~/.bashrc
+（如果没有安装vim先执行：sudo apt-get install vim）
+export JAVA_HOME=/usr/lib/jvm/java-7-sun  
+export JRE_HOME=${JAVA_HOME}/jre  
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+export PATH=${JAVA_HOME}/bin:$PATH
+加到末尾
+保存退出
+ source ~/.bashrc
+ 第四步：配置默认JDK版本
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-7-sun/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-7-sun/bin/javac 300  
+sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/java-7-sun/bin/jar 300
+检查
+sudo update-alternatives --config java  
+第五步：查看java版本号
+命令行：
+java -version
+系统会列出
+java version "1.7.0_01"
+Java(TM) SE Runtime Environment (build 1.7.0_01-b08)
+Java HotSpot(TM) Client VM (build 21.1-b02, mixed mode)

@@ -1,0 +1,5 @@
+遍历map
+Map m = new HashMap(); 
+for(Object o : map.keySet()){ 
+    map.get(o); 
+}

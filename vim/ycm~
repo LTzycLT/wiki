@@ -1,0 +1,10 @@
+ycm
+
+安装bundle
+安装ycm
+编译安装clang,设置系统环境变量
+http://www.cnblogs.com/csuftzzk/p/3435710.html
+
+安装ycm core
+./install.sh --clang-completer --system-libclang
+

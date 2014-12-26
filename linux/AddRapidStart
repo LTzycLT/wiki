@@ -1,0 +1,10 @@
+为了给eclipse创建启动栏图标，我们可以在/usr/share/applications目录下创建文件eclipse.desktop（文件名可以任意，但是文件名后缀必须是.desktop）,再将下面的内容复制过来：
+
+[Desktop Entry]
+Type=Application
+Name=Eclipse
+Comment=Eclipse Integrated Development Environment
+Icon=/home/zyc/Documents/Code/java/eclipse/icon.xpm
+Exec=/home/zyc/Documents/Code/java/eclipse/eclipse
+Terminal=false
+Categories=Development;IDE;Java;

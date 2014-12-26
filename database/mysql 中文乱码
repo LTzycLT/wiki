@@ -1,0 +1,23 @@
++--------------------------+---------------------------------+
+| Variable_name            | Value                           |
++--------------------------+---------------------------------+
+| character_set_client     | utf8                            |
+| character_set_connection | utf8                            |
+| character_set_database   | utf8                            |
+| character_set_filesystem | binary                          |
+| character_set_results    | utf8                            |
+| character_set_server     | utf8                            |
+| character_set_system     | utf8                            |
+| character_sets_dir       | D:"mysql-5.0.37"share"charsets" |
++--------------------------+---------------------------------+
+
+     mysql> SET character_set_client = utf8 ;
+     mysql> SET character_set_connection = utf8 ;
+     mysql> SET character_set_database = utf8 ;
+     mysql> SET character_set_results = utf8 ;
+     mysql> SET character_set_server = utf8 ;
+
+然后删除数据库，重建，database就会变成utf8,接着hibernate建表时就会自动变成utf8，不过每当重启mysql，就会根据配置文件还原，要重新改。
+
+
+所以关键只要建数据库时设定好编码，里面自然都是utf8了，后面就可以了。 create database eoj charset utf8;

@@ -1,0 +1,15 @@
+升级到Ubuntu 12.04 LTS后，有时候会出现输入法图标消失的现象，ctl+空格虽然能调出输入法，正常输入，但是没有图标总感觉怪怪的，搜了下方法，大致有两种，试了一种简单的，现把两种方法都记录下来，以防万一：
+
+方法一：在终端中输入：
+
+killall ibus-daemon
+
+ibus-daemon -d
+
+方法二：在终端中输入：
+
+gconftool --type boolean -s /desktop/ibus/panel/show_icon_on_systray true
+
+gconftool --type boolean -s /desktop/ibus/panel/show true
+
+gsettings set com.canonical.Unity.Panel systray-whitelist "['all']"
