@@ -1,0 +1,4 @@
+valgrind --tool=drd --show-stack-usage=yes 查看栈使用
+
+valgring --tool=massif 
+ms_print 

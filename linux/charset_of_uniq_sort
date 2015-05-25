@@ -1,0 +1,5 @@
+放在管道的子进程中 设置LC_ALL就不会影响当前bash的
+LC_ALL=C 中文字符就按unicode排序了
+
+cat out | LC_ALL=C sort
+cat out | LC_ALL=C uniq

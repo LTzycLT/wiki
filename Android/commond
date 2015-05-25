@@ -1,5 +1,6 @@
 #show target id 
 android list target
 
-
 android update project -t $target -p .
+
+adb shell dumpsys meminfo $package_name

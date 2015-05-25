@@ -1,0 +1,7 @@
+split --bytes 1048576 -d --suffix-length 1 pinyin.rom pinyin.rom
+
+--bytes 直接每一段字节数
+-d 后缀是数字
+--suffix-length 后缀长度
+pinyin.rom 需要分割的文件
+pinyin.rom 分割后的文件前缀名
